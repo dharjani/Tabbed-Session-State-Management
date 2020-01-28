@@ -1,0 +1,39 @@
+﻿@model WebApplication2.Models.EmployeeSummaryModel
+@{
+    ViewBag.Title = "Employee Summary";
+}
+
+<body>
+
+    <div id="tabPending">
+        <table id="penResults" class="display" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Contact</th>
+                    <th>E-mail</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @Model.EmployeeModels)
+                {
+                    <tr>
+                        <td>@item.FirstName @item.LastName</td>
+                        <td>@item.AddressLine1, @item.AddressLine2 </td>
+                        <td>@item.PrimaryContactNumber</td>
+                        <td>@item.PrimaryEmailId</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+    <div id="buttonPanel">
+        <input id="addNewEmployee" type="button" value="Add New Employee" />
+        <input id="addNewEmployeeNewWindow" type="button" value="Add New Employee (New Window)" />
+        @*<input id="addNewEmployee" type="button" value="Add New Employee" onclick="location.href='@Url.Action("EmployeeDetails", "Home")'"/>*@
+        
+        @*<input id="removeAllIndividuals" type="button" value="Remove All Individuals" />*@
+    </div>
+</body>

@@ -1,0 +1,66 @@
+﻿@model WebApplication2.Models.RegisterModel
+@{
+    ViewBag.Title = "Employee Address";
+}
+
+<style>
+    input[type="radio"] {
+        width: 10px;
+    }
+</style>
+
+@using (Html.BeginForm("EmployeeAddress", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <div id="addressSection">
+            <ol>
+                <li><u>@Html.Label("Address :")</u></li>
+            </ol>
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.AddressLine1)
+                        @Html.TextBoxFor(m => m.AddressLine1)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.AddressLine2)
+                        @Html.TextBoxFor(m => m.AddressLine2)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.Landmark)
+                        @Html.TextBoxFor(m => m.Landmark)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.City)
+                        @Html.TextBoxFor(m => m.City)
+                    </td>
+                    <td>
+                        @Html.LabelFor(m => m.PinCode)
+                        @Html.TextBoxFor(m => m.PinCode)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.State)
+                        @Html.TextBoxFor(m => m.State)
+                    </td>
+                    <td>
+                        @Html.LabelFor(m => m.Country)
+                        @Html.TextBoxFor(m => m.Country)
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <input type="submit" value="Next" />
+    </fieldset>
+}

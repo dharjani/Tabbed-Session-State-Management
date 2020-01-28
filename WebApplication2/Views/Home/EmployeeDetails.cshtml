@@ -1,0 +1,39 @@
+﻿@model WebApplication2.Models.RegisterModel
+@{
+    ViewBag.Title = "Employee Details";
+}
+
+<style>
+    input[type="radio"] {
+        width: 10px;
+    }
+</style>
+
+@using (Html.BeginForm("EmployeeDetails", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Register Employee</legend>
+        <div id="userSection">
+            <ol>
+                <li><u>@Html.Label("Employee Details :")</u></li>
+            </ol>
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.FirstName)
+                        @Html.TextBoxFor(m => m.FirstName)
+                    </td>
+
+                    <td>
+                        @Html.LabelFor(m => m.LastName)
+                        @Html.TextBoxFor(m => m.LastName)
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <input type="submit" value="Next" />
+    </fieldset>
+}

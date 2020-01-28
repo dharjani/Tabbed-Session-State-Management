@@ -1,0 +1,52 @@
+﻿@model WebApplication2.Models.RegisterModel
+@{
+    ViewBag.Title = "Employee Contact";
+}
+@*<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js"></script>
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css" rel="stylesheet" />*@
+
+<style>
+    input[type="radio"] {
+        width: 10px;
+    }
+</style>
+
+@using (Html.BeginForm("EmployeeContact", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <div id="contactSection">
+            <ol>
+                <li><u>@Html.Label("Contact :")</u></li>
+            </ol>
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.PrimaryEmailId)
+                        @Html.TextBoxFor(m => m.PrimaryEmailId)
+                    </td>
+                    <td>
+                        @Html.LabelFor(m => m.SecondaryEmailId)
+                        @Html.TextBoxFor(m => m.SecondaryEmailId)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.PrimaryContactNumber)
+                        @Html.TextBoxFor(m => m.PrimaryContactNumber)
+                    </td>
+                    <td>
+                        @Html.LabelFor(m => m.ContactNumber2)
+                        @Html.TextBoxFor(m => m.ContactNumber2)
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <input type="submit" value="Next" />
+    </fieldset>
+}
